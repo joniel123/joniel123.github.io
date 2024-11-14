@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>עמוד הבית - ResilienceVR</title>
+    <style>
+        /* עיצוב בסיסי לדף הבית */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        .hero {
+            background-image: url('https://via.placeholder.com/1600x600'); /* ניתן להוסיף תמונה אמיתית */
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            text-align: center;
+            padding: 80px 20px;
+            font-size: 2em;
+            animation: fadeIn 3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .container {
+            padding: 40px;
+            text-align: center;
+        }
+
+        .section {
+            margin: 40px 0;
+        }
+
+        .section h2 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            color: #007bff;
+        }
+
+        .section p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .cta-btn {
+            background-color: #28a745;
+            color: #fff;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-size: 1.2em;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            background-color: #218838;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>ברוכים הבאים ל-ResilienceVR</h1>
+        <p>פלטפורמת טיפול ב-VR לשיקום חוויות טראומה</p>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <p>ביחד, נבנה מחדש את הכוח הפנימי שלך.</p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+
+        <!-- Section 1 -->
+        <div class="section">
+            <h2>מה אנחנו מציעים?</h2>
+            <p>ResilienceVR מציעה סביבה וירטואלית בטוחה, בה חיילים ואזרחים יכולים להתעמת ולהתמודד עם טראומות מלחמה באופן מבוקר ומרפא.</p>
+        </div>
+
+        <!-- Section 2 -->
+        <div class="section">
+            <h2>כיצד זה עובד?</h2>
+            <p>הפלטפורמה משלבת סצנות מציאות מדומה (VR) יחד עם טכניקות טיפוליות שמאפשרות למטופל להתמודד עם זיכרונות טראומטיים בצורה מבוקרת ובטוחה.</p>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="section">
+            <a href="#" class="cta-btn">התחל את הדרך שלך להחלמה עכשיו!</a>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 ResilienceVR - כל הזכויות שמורות</p>
+        <p>
+            <a href="#">אודות</a> | <a href="#">צור קשר</a> | <a href="#">תנאי שימוש</a>
+        </p>
+    </footer>
+
+</body>
+</html>
