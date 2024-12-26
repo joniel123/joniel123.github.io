@@ -8,9 +8,12 @@
             font-family: Arial, sans-serif;
             background-color: #e0f7fa; /* צבע רקע חדש */
             color: #004d40; /* צבע טקסט חדש */
+            margin: 0;
+            padding: 0;
         }
         h1, h2 {
             color: #00796b; /* צבע כותרות חדש */
+            text-align: center; /* יישור מרכזי לכותרות */
         }
         a {
             color: #00695c; /* צבע קישורים חדש */
@@ -20,37 +23,111 @@
             color: #004d40; /* צבע קישורים בעת ריחוף */
             text-decoration: underline;
         }
+        /* הגדרת הרשת (grid) */
+        .container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 עמודות באורך שווה */
+            gap: 30px; /* רווח בין העמודות */
+            margin: 20px;
+        }
+        .section {
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <title>העמוד של יונתן</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f7fa; /* צבע רקע חדש */
+            color: #004d40; /* צבע טקסט חדש */
+            margin: 0;
+            padding: 0;
+        }
+        h1, h2 {
+            color: #00796b; /* צבע כותרות חדש */
+            text-align: center; /* יישור מרכזי לכותרות */
+        }
+        a {
+            color: #00695c; /* צבע קישורים חדש */
+            text-decoration: none;
+        }
+        a:hover {
+            color: #004d40; /* צבע קישורים בעת ריחוף */
+            text-decoration: underline;
+        }
+        /* הגדרת הרשת (grid) */
+        .container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 עמודות באורך שווה */
+            gap: 30px; /* רווח בין העמודות */
+            margin: 20px;
+        }
+        .section {
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center; /* יישור מרכזי לכותרות פנימיות */
+        }
+        ul {
+            list-style-type: none; /* הסרת כדורים מרשימות */
+            padding: 0;
+        }
+        li {
+            margin: 10px 0; /* ריווח בין פריטים ברשימה */
+        }
+        /* גובה מינימלי עבור עמודת הקישורים */
+        .section:last-child {
+            min-height: 200px; /* גובה מינימלי לעמודת הקישורים */
+        }
     </style>
 </head>
 <body>
     <h1>ברוכים הבאים לעמוד של יונתן</h1>
 
-    <h2>HTML</h2>
-    <ul>
-        <li><a href="https://joniel123.github.io/task1.html">HTML 1</a></li>
-        <li><a href="https://joniel123.github.io/chapter1.html">HTML 2</a></li>
-        <li><a href="https://joniel123.github.io/task3.html">HTML 3</a></li>
-    </ul>
+    <div class="container">
+        <div class="section">
+            <h2>HTML</h2>
+            <ul>
+                <li><a href="https://joniel123.github.io/task1.html">HTML 1</a></li>
+                <li><a href="https://joniel123.github.io/chapter1.html">HTML 2</a></li>
+                <li><a href="https://joniel123.github.io/task3.html">HTML 3</a></li>
+            </ul>
+        </div>
 
-    <h2>CSS</h2>
-    <ul>
-        <li><a href="https://joniel123.github.io/ar.html">CSS 6</a></li>
-        <li><a href="https://joniel123.github.io/%D7%94%D7%92%D7%95%D7%9C%D7%A9%20%D7%94%D7%92%D7%93%D7%95%D7%9C/">CSS 7</a></li>
-    </ul>
+        <div class="section">
+            <h2>CSS</h2>
+            <ul>
+                <li><a href="https://joniel123.github.io/ar.html">CSS 6</a></li>
+                <li><a href="https://joniel123.github.io/%D7%94%D7%92%D7%95%D7%9C%D7%A9%20%D7%94%D7%92%D7%93%D7%95%D7%9C/">CSS 7</a></li>
+            </ul>
+        </div>
 
-    <h2>JavaScript</h2>
-    <ul>
-        <!-- הרשימה ריקה -->
-    </ul>
+        <div class="section">
+            <h2>JavaScript</h2>
+            <ul>
+                <!-- הרשימה ריקה -->
+            </ul>
+        </div>
 
-    <h2>קישורים</h2>
-    <ul>
-        <li><a href="https://www.tau.ac.il">אתר הקורס</a></li>
-        <li><a href="https://github.com">GitHub</a></li>
-        <li><a href="https://www.w3schools.com">W3Schools</a></li>
-        <li><a href="https://www.csszengarden.com">CSS Zen Garden</a></li>
-        <li><a href="https://moodle.tau.ac.il">Moodle</a></li>
-    </ul>
+        <div class="section">
+            <h2>קישורים</h2>
+            <ul>
+                <li><a href="https://www.tau.ac.il">אתר הקורס</a></li>
+                <li><a href="https://github.com">GitHub</a></li>
+                <li><a href="https://www.w3schools.com">W3Schools</a></li>
+                <li><a href="https://www.csszengarden.com">CSS Zen Garden</a></li>
+                <li><a href="https://moodle.tau.ac.il">Moodle</a></li>
+            </ul>
+        </div>
+    </div>
 </body>
 </html>
+
 
