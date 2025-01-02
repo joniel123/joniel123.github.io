@@ -1,399 +1,94 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html lang="he">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>העמוד של יונתן</title>
     <style>
-        /* Reset and base styles */
-        * {
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f7fa;
+            color: #004d40;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
-
-        :root {
-            --primary-color: #0066cc;
-            --text-color: #1d1d1f;
-            --bg-light: #f5f5f7;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background-color: #ffffff;
-            color: var(--text-color);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Header styles */
-        .header {
-            background-color: rgba(255, 255, 255, 0.85);
-            backdrop-filter: saturate(180%) blur(20px);
-            -webkit-backdrop-filter: saturate(180%) blur(20px);
-            position: fixed;
-            top: 0;
-            right: 0;
-            left: 0;
-            padding: 1rem;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(0,0,0,0.1);
-        }
-
-        .nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 24px;
-        }
-
-        .nav-logo {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--text-color);
-            text-decoration: none;
-            letter-spacing: -0.5px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-        }
-
-        .nav-links a {
-            color: var(--text-color);
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: var(--transition);
-            position: relative;
-            padding: 5px 0;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background-color: var(--primary-color);
-            transform: scaleX(0);
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover::after {
-            transform: scaleX(1);
-        }
-
-        /* Main content styles */
-        .main-content {
-            max-width: 1200px;
-            margin: 120px auto 60px;
-            padding: 0 24px;
-        }
-
-        .hero {
+        h1, h2 {
+            color: #00796b;
             text-align: center;
-            margin-bottom: 80px;
-            padding: 60px 20px;
-            background: linear-gradient(180deg, #fff, var(--bg-light));
-            border-radius: 30px;
         }
-
-        h1 {
-            font-size: 56px;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: linear-gradient(120deg, #000, #333);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -0.5px;
-        }
-
-        .subtitle {
-            font-size: 1.5rem;
-            color: #6e6e73;
-            margin-bottom: 2.5rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .button {
-            display: inline-flex;
-            align-items: center;
-            padding: 12px 28px;
-            background-color: var(--primary-color);
-            color: white;
-            border-radius: 980px;
+        a {
+            color: #00695c;
             text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: 500;
-            transition: var(--transition);
-            box-shadow: 0 4px 12px rgba(0, 102, 204, 0.2);
         }
-
-        .button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 102, 204, 0.3);
-            background-color: #0077ed;
+        a:hover {
+            color: #004d40;
+            text-decoration: underline;
         }
-
-        .grid-container {
+        .container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 30px;
-            margin-top: 60px;
+            margin: 20px;
         }
-
         .section {
-            background: #fff;
-            padding: 40px;
-            border-radius: 20px;
-            transition: var(--transition);
-            border: 1px solid rgba(0,0,0,0.1);
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-
-        .section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-        }
-
         h2 {
-            font-size: 28px;
-            font-weight: 600;
-            margin-bottom: 25px;
-            color: var(--text-color);
-            letter-spacing: -0.5px;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        li {
-            margin: 16px 0;
-        }
-
-        li a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-size: 1.05rem;
-            transition: var(--transition);
-            display: inline-block;
-        }
-
-        li a:hover {
-            color: #0077ed;
-            transform: translateX(-5px);
-        }
-
-        /* Footer styles */
-        .footer {
-            background-color: var(--bg-light);
-            padding: 80px 24px 40px;
-            margin-top: 100px;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 60px;
-        }
-
-        .footer-section h3 {
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-            color: var(--text-color);
-            font-weight: 600;
-        }
-
-        .footer-section a {
-            display: block;
-            color: #424245;
-            text-decoration: none;
-            margin-bottom: 0.8rem;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        .footer-section a:hover {
-            color: var(--primary-color);
-            transform: translateX(-5px);
-        }
-
-        .footer-bottom {
             text-align: center;
-            padding-top: 40px;
-            margin-top: 60px;
-            border-top: 1px solid rgba(0,0,0,0.1);
-            color: #86868b;
-            font-size: 0.9rem;
         }
-
-        /* Responsive design */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            h1 {
-                font-size: 40px;
-            }
-
-            .subtitle {
-                font-size: 1.2rem;
-            }
-
-            .main-content {
-                margin-top: 100px;
-            }
-
-            .section {
-                padding: 30px;
-            }
-
-            .grid-container {
-                grid-template-columns: 1fr;
-            }
+        ul {
+            list-style-type: none;
+            padding: 0;
         }
-
-        /* Dark mode support */
-        @media (prefers-color-scheme: dark) {
-            body {
-                background-color: #000;
-                color: #f5f5f7;
-            }
-
-            .header {
-                background-color: rgba(0, 0, 0, 0.85);
-                border-bottom: 1px solid rgba(255,255,255,0.1);
-            }
-
-            .nav-logo {
-                color: #f5f5f7;
-            }
-
-            .nav-links a {
-                color: #f5f5f7;
-            }
-
-            .hero {
-                background: linear-gradient(180deg, #000, #1d1d1f);
-            }
-
-            h1 {
-                background: linear-gradient(120deg, #fff, #f5f5f7);
-                -webkit-background-clip: text;
-            }
-
-            .section {
-                background: #1d1d1f;
-                border: 1px solid rgba(255,255,255,0.1);
-            }
-
-            .footer {
-                background-color: #1d1d1f;
-            }
-
-            .footer-section a {
-                color: #86868b;
-            }
-
-            .footer-bottom {
-                border-top: 1px solid rgba(255,255,255,0.1);
-            }
+        li {
+            margin: 10px 0;
+        }
+        .section:last-child {
+            min-height: 200px;
         }
     </style>
 </head>
 <body>
-    <header class="header">
-        <nav class="nav">
-            <a href="#" class="nav-logo">יונתן</a>
-            <div class="nav-links">
-                <a href="#html">HTML</a>
-                <a href="#css">CSS</a>
-                <a href="#javascript">JavaScript</a>
-                <a href="#links">קישורים</a>
-            </div>
-        </nav>
-    </header>
+    <h1>ברוכים הבאים לעמוד של יונתן</h1>
 
-    <main class="main-content">
-        <div class="hero">
-            <h1>ברוכים הבאים לעמוד של יונתן</h1>
-            <p class="subtitle">מקום שבו טכנולוגיה ועיצוב נפגשים ליצירת חוויות דיגיטליות מרהיבות</p>
-            <a href="#links" class="button">התחל לגלות</a>
+    <div class="container">
+        <div class="section">
+            <h2>HTML</h2>
+            <ul>
+                <li><a href="https://joniel123.github.io/task1.html">HTML 1</a></li>
+                <li><a href="https://joniel123.github.io/chapter1.html">HTML 2</a></li>
+                <li><a href="https://joniel123.github.io/task3.html">HTML 3</a></li>
+            </ul>
         </div>
 
-        <div class="grid-container">
-            <section id="html" class="section">
-                <h2>HTML</h2>
-                <ul>
-                    <li><a href="https://joniel123.github.io/task1.html">HTML 1</a></li>
-                    <li><a href="https://joniel123.github.io/chapter1.html">HTML 2</a></li>
-                    <li><a href="https://joniel123.github.io/task3.html">HTML 3</a></li>
-                </ul>
-            </section>
-
-            <section id="css" class="section">
-                <h2>CSS</h2>
-                <ul>
-                    <li><a href="https://joniel123.github.io/ar.html">CSS 6</a></li>
-                    <li><a href="https://joniel123.github.io/%D7%94%D7%92%D7%95%D7%9C%D7%A9%20%D7%94%D7%92%D7%93%D7%95%D7%9C/">CSS 7</a></li>
-                </ul>
-            </section>
-
-            <section id="javascript" class="section">
-                <h2>JavaScript</h2>
-                <ul>
-                    <!-- הרשימה ריקה -->
-                </ul>
-            </section>
-
-            <section id="links" class="section">
-                <h2>קישורים</h2>
-                <ul>
-                    <li><a href="https://www.tau.ac.il">אתר הקורס</a></li>
-                    <li><a href="https://github.com">GitHub</a></li>
-                    <li><a href="https://www.w3schools.com">W3Schools</a></li>
-                    <li><a href="https://www.csszengarden.com">CSS Zen Garden</a></li>
-                    <li><a href="https://moodle.tau.ac.il">Moodle</a></li>
-                </ul>
-            </section>
+        <div class="section">
+            <h2>CSS</h2>
+            <ul>
+                <li><a href="https://joniel123.github.io/ar.html">CSS 6</a></li>
+                <li><a href="https://joniel123.github.io/%D7%94%D7%92%D7%95%D7%9C%D7%A9%20%D7%94%D7%92%D7%93%D7%95%D7%9C/">CSS 7</a></li>
+            </ul>
         </div>
-    </main>
 
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>ניווט מהיר</h3>
-                <a href="#html">HTML</a>
-                <a href="#css">CSS</a>
-                <a href="#javascript">JavaScript</a>
-                <a href="#links">קישורים</a>
-            </div>
-            <div class="footer-section">
-                <h3>משאבים</h3>
-                <a href="https://www.tau.ac.il">אתר הקורס</a>
-                <a href="https://github.com">GitHub</a>
-                <a href="https://www.w3schools.com">W3Schools</a>
-            </div>
-            <div class="footer-section">
-                <h3>צור קשר</h3>
-                <a href="mailto:contact@example.com">אימייל</a>
-                <a href="#">LinkedIn</a>
-                <a href="#">GitHub</a>
-            </div>
+        <div class="section">
+            <h2>JavaScript</h2>
+            <ul>
+                <li><a href="https://joniel123.github.io/run.html">JS1</a></li>
+            </ul>
         </div>
-        <div class="footer-bottom">
-            <p>© 2024 יונתן. כל הזכויות שמורות.</p>
+
+        <div class="section">
+            <h2>קישורים</h2>
+            <ul>
+                <li><a href="https://www.tau.ac.il">אתר הקורס</a></li>
+                <li><a href="https://github.com">GitHub</a></li>
+                <li><a href="https://www.w3schools.com">W3Schools</a></li>
+                <li><a href="https://www.csszengarden.com">CSS Zen Garden</a></li>
+                <li><a href="https://moodle.tau.ac.il">Moodle</a></li>
+            </ul>
         </div>
-    </footer>
+    </div>
 </body>
 </html>
+
