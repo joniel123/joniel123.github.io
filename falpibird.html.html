@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html dir="rtl">
+<head>
+    <title>משחק הציפור המעופפת</title>
+    <style>
+        #gameContainer {
+            width: 800px;
+            height: 600px;
+            border: 2px solid #333;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #87CEEB, #E0F6FF);
+        }
+
+        #bird {
+            width: 40px;
+            height: 40px;
+            background-color: #FFD700;
+            position: absolute;
+            border-radius: 50%;
+            left: 100px;
+        }
+
+        .pipe {
+            width: 60px;
+            position: absolute;
+            background-color: #32CD32;
+        }
+
+        .pipe.top {
+            top: 0;
+        }
+
+        .pipe.bottom {
+            bottom: 0;
+        }
+
+        #score {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            font-family: Arial;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        #highScore {
+            position: absolute;
+            top: 50px;
+            right: 20px;
+            font-size: 18px;
+            font-family: Arial;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body>
+    <div id="gameContainer">
+        <div id="bird"></div>
+        <div id="score">ניקוד: 0</div>
+        <div id="highScore">שיא: 0</div>
+    </div>
+
+    <script>
+        const bird = document.getElementById('bird');
+        const gameContainer = document.getElementById('gameContainer');
+        const scoreElement = document.getElementById('score');
+        const highScoreElement = document.getElementById('highScore');
+
+        let birdY = 300;
+        let velocity = 0;
+        let gravity = 0.5;
+        let score = 0;
+        let highScore = localStorage.getItem('highScore') || 0;
+        let gameSpeed = 5;
+        let isGameOver = false;
+
+        highScoreElement.textContent = 'שיא: ' + highScore;
+
+        function jump() {
+            if (!isGameOver) {
+                velocity = -8;
+                playFlapSound();
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.code === 'Space') {
+                jump();
+            }
+        });
+
+        document.addEventListener('click', jump);
+
+        function createPipe() {
+            const gap = 200 - (score / 10);
+            const topHeight = Math.random() * (gameContainer.clientHeight - gap - 100) + 50;
+            
+            const topPipe = document.createElement('div');
+            topPipe.className = 'pipe top';
+            topPipe.style.height = topHeight + 'px';
+            topPipe.style.left = gameContainer.clientWidth + 'px';
+            
+            const bottomPipe = document.createElement('div');
+            bottomPipe.className = 'pipe bottom';
+            bottomPipe.style.height = (gameContainer.clientHeight - topHeight - gap) + 'px';
+            bottomPipe.style.left = gameContainer.clientWidth + 'px';
+            
+            gameContainer.appendChild(topPipe);
+            gameContainer.appendChild(bottomPipe);
+            
+            function movePipe() {
+                const pipeLeft = parseFloat(topPipe.style.left);
+                if (pipeLeft < -60) {
+                    gameContainer.removeChild(topPipe);
+                    gameContainer.removeChild(bottomPipe);
+                } else {
+                    topPipe.style.left = (pipeLeft - gameSpeed) + 'px';
+                    bottomPipe.style.left = (pipeLeft - gameSpeed) + 'px';
+                    
+                    if (pipeLeft < 100 && pipeLeft > 40) {
+                        checkCollision(topPipe, bottomPipe);
+                    }
+                }
+            }
+            
+            setInterval(movePipe, 20);
+        }
+
+        function checkCollision(topPipe, bottomPipe) {
+            const birdRect = bird.getBoundingClientRect();
+            const topPipeRect = topPipe.getBoundingClientRect();
+            const bottomPipeRect = bottomPipe.getBoundingClientRect();
+            
+            if (birdRect.right > topPipeRect.left && 
+                birdRect.left < topPipeRect.right && 
+                (birdRect.top < topPipeRect.bottom || 
+                birdRect.bottom > bottomPipeRect.top)) {
+                gameOver();
+            }
+        }
+
+        function gameOver() {
+            isGameOver = true;
+            if (score > highScore) {
+                highScore = score;
+                localStorage.setItem('highScore', highScore);
+                highScoreElement.textContent = 'שיא: ' + highScore;
+            }
+            alert('המשחק נגמר! הניקוד שלך: ' + score);
+            location.reload();
+        }
+
+        function updateGame() {
+            if (!isGameOver) {
+                velocity += gravity;
+                birdY += velocity;
+                bird.style.top = birdY + 'px';
+                
+                if (birdY < 0 || birdY > gameContainer.clientHeight - 40) {
+                    gameOver();
+                }
+                
+                score++;
+                scoreElement.textContent = 'ניקוד: ' + score;
+                
+                if (score % 100 === 0) {
+                    gameSpeed += 0.5;
+                }
+            }
+        }
+
+        function playFlapSound() {
+            const audio = new Audio('data:audio/wav;base64,UklGRl9vT19XQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgA');
+            audio.play();
+        }
+
+        setInterval(createPipe, 1500);
+        setInterval(updateGame, 20);
+    </script>
+</body>
+</html>
